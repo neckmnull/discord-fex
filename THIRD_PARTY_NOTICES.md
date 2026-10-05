@@ -1,31 +1,31 @@
-# Сторонние компоненты
+# Third-Party Notices
 
-Этот репозиторий является сборкой программ, конфигураций и списков из нескольких независимых источников. Авторские права и лицензии на каждый компонент сохраняются за соответствующими правообладателями.
+This repository is a bundle of software, configurations, and lists from several independent sources. Copyright and license terms for each component remain with their respective rights holders.
 
-| Проект | Использование в сборке | Исходный репозиторий |
+| Project | Use in this bundle | Upstream repository |
 | --- | --- | --- |
-| zapret | Механизмы DPI desync, утилиты и документация | <https://github.com/bol-van/zapret> |
-| zapret-win-bundle | Основа Windows-сборки и сценарии | <https://github.com/bol-van/zapret-win-bundle> |
-| WinDivert | Перехват и обработка пакетов в Windows | <https://github.com/basil00/WinDivert> |
-| Zapret Autorunner | Установка BAT-конфигурации как службы | <https://github.com/Priler/bat_autorunner> |
-| Zapret Preconfigs Tester | Автоматический подбор конфигурации | <https://github.com/Priler/zapret_preconfigs_tester> |
-| Zapret Domains Selector | Настройка списков доменов | <https://github.com/Priler/zapret_domains_selector> |
-| zapret-discord-youtube | Конфигурации Discord и YouTube | <https://github.com/Flowseal/zapret-discord-youtube> |
-| DiscordFix Autoupdate | Обновление сборки | <https://github.com/Priler/discordfix_autoupdate> |
-| IPSets-For-Bypass-in-Russia | Списки IP-адресов | <https://github.com/V3nilla/IPSets-For-Bypass-in-Russia> |
-| AlbanianVirus | Шуточный файл `Запустить майнер.exe`, не требующийся для работы | <https://github.com/Priler/AlbanianVirus> |
+| zapret | DPI desynchronization mechanisms, utilities, and documentation | <https://github.com/bol-van/zapret> |
+| zapret-win-bundle | Windows bundle foundation and scripts | <https://github.com/bol-van/zapret-win-bundle> |
+| WinDivert | Windows packet capture and processing | <https://github.com/basil00/WinDivert> |
+| Zapret Autorunner | Installing a BAT configuration as a service | <https://github.com/Priler/bat_autorunner> |
+| Zapret Preconfigs Tester | Automatic preset discovery | <https://github.com/Priler/zapret_preconfigs_tester> |
+| Zapret Domains Selector | Domain-list configuration | <https://github.com/Priler/zapret_domains_selector> |
+| zapret-discord-youtube | Discord and YouTube configurations | <https://github.com/Flowseal/zapret-discord-youtube> |
+| DiscordFix Autoupdate | Bundle update support | <https://github.com/Priler/discordfix_autoupdate> |
+| IPSets-For-Bypass-in-Russia | IP address lists | <https://github.com/V3nilla/IPSets-For-Bypass-in-Russia> |
+| AlbanianVirus | The optional `Запустить майнер.exe` joke program, not required for operation | <https://github.com/Priler/AlbanianVirus> |
 
-## Лицензирование
+## Licensing
 
-В репозитории намеренно не объявлена одна общая лицензия на весь комплект: это могло бы неверно переопределить условия сторонних проектов. Перед копированием, изменением или распространением конкретного файла:
+This repository intentionally does not declare one license for the entire bundle because doing so could incorrectly override the terms of third-party projects. Before copying, modifying, or distributing a particular file:
 
-1. определите, из какого upstream-проекта он получен;
-2. откройте актуальный файл лицензии в соответствующем репозитории;
-3. сохраните необходимые уведомления об авторских правах;
-4. соблюдайте условия лицензии именно этого компонента.
+1. identify the upstream project from which it originated;
+2. review the current license file in that repository;
+3. preserve all required copyright notices;
+4. comply with the license terms for that specific component.
 
-Если источник отдельного файла определить невозможно, отсутствие общей лицензии не означает автоматического разрешения на его повторное лицензирование.
+If the source of a file cannot be determined, the absence of a repository-wide license does not grant permission to relicense it.
 
-## Бинарные файлы
+## Binary files
 
-Репозиторий содержит уже собранные EXE, DLL и SYS-файлы. Для аудита или воспроизводимой сборки используйте исходный код в перечисленных выше репозиториях. Совпадение названия проекта само по себе не доказывает идентичность бинарного файла — при необходимости проверяйте контрольные суммы и собирайте компонент самостоятельно.
+This repository contains prebuilt EXE, DLL, and SYS files. For auditing or reproducible builds, use the source code from the upstream repositories listed above. A matching project name alone does not prove that a binary is identical to an upstream build; verify checksums or build the component from source when necessary.

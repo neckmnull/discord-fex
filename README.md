@@ -2,153 +2,155 @@
 
 # Discord Fex
 
-**Готовая Windows-сборка на базе `zapret` и WinDivert с конфигурациями для Discord, YouTube и других сервисов.**
+**A ready-to-use Windows bundle powered by `zapret` and WinDivert, with presets for Discord, YouTube, and other services.**
 
-[![Windows](https://img.shields.io/badge/Windows-7%2F10%2F11-0078D4?logo=windows&logoColor=white)](#системные-требования)
+[![Windows](https://img.shields.io/badge/Windows-7%2F10%2F11-0078D4?logo=windows&logoColor=white)](#system-requirements)
 [![zapret](https://img.shields.io/badge/zapret-win--bundle-6A5ACD)](https://github.com/bol-van/zapret-win-bundle)
-[![Version](https://img.shields.io/badge/DiscordFix-9.3.0-5865F2?logo=discord&logoColor=white)](#о-сборке)
-[![Repository](https://img.shields.io/badge/repository-public-2ea44f?logo=github)](https://github.com/neckmnull/discord-fex)
+[![Version](https://img.shields.io/badge/DiscordFix-9.3.0-5865F2?logo=discord&logoColor=white)](https://github.com/neckmnull/discord-fex/releases/latest)
+[![Release](https://img.shields.io/github/v/release/neckmnull/discord-fex?display_name=tag&sort=semver)](https://github.com/neckmnull/discord-fex/releases/latest)
 
-[Быстрый старт](#быстрый-старт) · [Конфигурации](#основные-конфигурации) · [Автозапуск](#установка-как-службы) · [Диагностика](#диагностика) · [Безопасность](#безопасность)
+[Quick start](#quick-start) · [Presets](#main-presets) · [Windows service](#installing-as-a-windows-service) · [Troubleshooting](#troubleshooting) · [Security](#security)
 
 </div>
 
 > [!IMPORTANT]
-> Сначала полностью распакуйте архив в отдельную папку. Не запускайте файлы прямо из ZIP-архива.
+> Extract the entire archive into a separate folder before running anything. Do not launch files directly from a ZIP archive.
 
-## О сборке
+## About
 
-Discord Fex объединяет Windows-версию [zapret](https://github.com/bol-van/zapret), драйвер [WinDivert](https://github.com/basil00/WinDivert), списки доменов и готовые стратегии DPI desync. В комплекте находятся конфигурации для Discord, YouTube, Telegram, Twitch, Spotify, Steam и других сервисов.
+Discord Fex combines the Windows version of [zapret](https://github.com/bol-van/zapret), the [WinDivert](https://github.com/basil00/WinDivert) driver, domain lists, and ready-made DPI desynchronization strategies. The bundle includes presets for Discord, YouTube, Telegram, Twitch, Spotify, Steam, and other services.
 
-Сборка не является VPN или прокси: `winws.exe` локально обрабатывает выбранный сетевой трафик с помощью WinDivert. Доступность конкретной стратегии зависит от провайдера и состояния сети, поэтому универсальной конфигурации может не быть.
+This project is not a VPN or proxy. `winws.exe` processes selected network traffic locally through WinDivert. Strategy effectiveness depends on the ISP and current network conditions, so no single preset is guaranteed to work everywhere.
 
-### Возможности
+### Features
 
-- готовые профили для Discord, YouTube и комбинированного режима;
-- альтернативные стратегии для разных провайдеров;
-- автоматический поиск подходящего профиля;
-- установка выбранной стратегии как службы Windows;
-- игровой режим и управление списками доменов;
-- `blockcheck` и встроенные сетевые тесты для диагностики;
-- архив конфигураций из предыдущих версий.
+- ready-made profiles for Discord, YouTube, and combined use;
+- alternative strategies for different ISPs;
+- automatic preset discovery;
+- installation of a selected strategy as a Windows service;
+- game mode and domain-list management;
+- `blockcheck` and built-in network diagnostics;
+- archived presets from previous versions.
 
-## Системные требования
+## System requirements
 
-- Windows 10 или Windows 11; для Windows 7 в `bin/win7` есть отдельный установочный сценарий;
-- права администратора для загрузки WinDivert и установки службы;
-- распакованная локальная копия репозитория;
-- отсутствие одновременно работающих программ, которые конфликтуют с WinDivert: других сборок zapret, некоторых VPN, WARP и похожих сетевых фильтров.
+- Windows 10 or Windows 11; a separate installation script for Windows 7 is available under `bin/win7`;
+- administrator privileges to load WinDivert and install a service;
+- a fully extracted local copy of the repository;
+- no conflicting network filtering software running at the same time, such as another zapret bundle, certain VPN clients, WARP, or similar tools.
 
-## Быстрый старт
+## Quick start
 
-1. Скачайте репозиторий через **Code → Download ZIP** или клонируйте его:
+1. Download the bundle from the [latest release](https://github.com/neckmnull/discord-fex/releases/latest), use **Code → Download ZIP**, or clone the repository:
 
    ```powershell
    git clone https://github.com/neckmnull/discord-fex.git
    cd discord-fex
    ```
 
-2. Если скачивали ZIP, полностью распакуйте его.
-3. Закройте другие экземпляры zapret, VPN/WARP и программы с сетевой фильтрацией.
-4. Откройте папку `pre-configs`.
-5. Запустите от имени администратора нужный BAT-файл:
-   - `DiscordFix.bat` — Discord и голосовые каналы;
+2. If you downloaded an archive, extract it completely.
+3. Close other zapret instances, VPN/WARP clients, and network-filtering applications.
+4. Open the `pre-configs` directory.
+5. Run the required BAT file as administrator:
+   - `DiscordFix.bat` — Discord, including voice channels;
    - `YoutubeFix.bat` — YouTube;
-   - `UltimateFix.bat` — комбинированная конфигурация.
-6. Если основной профиль не подходит, попробуйте одноимённый вариант `ALT` или профиль для своего провайдера.
+   - `UltimateFix.bat` — combined configuration.
+6. If the default profile does not work, try an `ALT` variant or an ISP-specific preset.
 
 > [!TIP]
-> Не изменяйте расположение отдельных файлов внутри сборки: BAT-сценарии используют относительные пути к `bin` и `lists`.
+> Do not move individual files within the bundle. The BAT scripts use relative paths to `bin` and `lists`.
 
-## Основные конфигурации
+## Main presets
 
-| Файл или группа | Назначение |
+| File or group | Purpose |
 | --- | --- |
-| `DiscordFix*.bat` | Discord, включая голосовой трафик |
-| `YoutubeFix*.bat` | YouTube и Google Video |
-| `UltimateFix*.bat` | Discord + YouTube и расширенный список доменов |
-| `general*.bat` | Общие стратегии для пользовательских списков |
-| `discord-optimized.bat` | Оптимизированный профиль Discord |
-| `discord-voice-only.bat` | Только голосовой трафик Discord |
-| `gaming.bat` | Игровой профиль |
-| `youtube-optimized.bat` | Оптимизированный профиль YouTube |
-| `pre-configs/6.0` | Профили версии 6.0 для случаев, когда новые стратегии не подходят |
-| `pre-configs/_old` | Устаревшие профили; используйте только для диагностики |
+| `DiscordFix*.bat` | Discord, including voice traffic |
+| `YoutubeFix*.bat` | YouTube and Google Video |
+| `UltimateFix*.bat` | Discord, YouTube, and an extended domain list |
+| `general*.bat` | General-purpose strategies for custom lists |
+| `discord-optimized.bat` | Optimized Discord profile |
+| `discord-voice-only.bat` | Discord voice traffic only |
+| `gaming.bat` | Gaming profile |
+| `youtube-optimized.bat` | Optimized YouTube profile |
+| `pre-configs/6.0` | Version 6.0 profiles for systems where newer strategies do not work |
+| `pre-configs/_old` | Obsolete profiles, retained for troubleshooting only |
 
-Результат зависит от провайдера. Начинайте с профиля без суффикса, затем проверяйте `ALT`-варианты и конфигурации с названием своего провайдера.
+Results vary by ISP. Start with the profile without a suffix, then test `ALT` variants and profiles named after your provider.
 
-## Установка как службы
+## Installing as a Windows service
 
-Для работы в фоне можно использовать один из вариантов:
+To run a strategy in the background:
 
-1. запустить `service.bat` от имени администратора;
-2. выбрать **Install as Service** и нужную конфигурацию;
-3. проверить результат через **Check Status**.
+1. run `service.bat` as administrator;
+2. select **Install as Service** and choose a configuration;
+3. verify the result with **Check Status**.
 
-Удаление выполняется в том же меню через **Remove Services**. В корне также находится графическая утилита `Установить как службу в АВТОЗАПУСК v2.exe`, основанная на проекте [bat_autorunner](https://github.com/Priler/bat_autorunner).
+Use **Remove Services** in the same menu to uninstall it. The root directory also contains `Установить как службу в АВТОЗАПУСК v2.exe`, a graphical utility based on [bat_autorunner](https://github.com/Priler/bat_autorunner).
 
-## Дополнительные инструменты
+## Additional tools
 
-| Инструмент | Что делает |
+Some bundled filenames are in Russian because they are retained from their upstream distributions. Renaming them is not recommended.
+
+| Tool | Purpose |
 | --- | --- |
-| `service.bat` | Управляет службой, обновлениями списков, тестами и кэшем Discord |
-| `blockcheck.cmd` | Запускает подбор стратегии `blockcheck` |
-| `switch_game_mode.cmd` | Включает или выключает игровой диапазон портов |
-| `АВТО-ПОИСК пре-конфига*.exe` | Автоматически тестирует готовые профили |
-| `НАСТРОИТЬ список доменов.exe` | Формирует пользовательский набор доменов |
-| `ОБНОВИТЬ сборку.exe` | Проверяет наличие обновлённой сборки |
-| `utils/test zapret.ps1` | Выполняет сетевые тесты и сохраняет результаты локально |
+| `service.bat` | Manages the service, list updates, tests, and the Discord cache |
+| `blockcheck.cmd` | Runs the `blockcheck` strategy discovery tool |
+| `switch_game_mode.cmd` | Enables or disables the gaming port range |
+| `АВТО-ПОИСК пре-конфига*.exe` | Automatically tests bundled presets |
+| `НАСТРОИТЬ список доменов.exe` | Builds a custom domain selection |
+| `ОБНОВИТЬ сборку.exe` | Checks for bundle updates |
+| `utils/test zapret.ps1` | Runs network tests and stores results locally |
 
-## Диагностика
+## Troubleshooting
 
-### Окно открывается и сразу закрывается
+### The window opens and immediately closes
 
-1. Убедитесь, что архив полностью распакован.
-2. Проверьте наличие `bin/winws.exe`, `bin/WinDivert.dll` и `bin/WinDivert64.sys`.
-3. Запустите `service.bat` → **Run Diagnostics**.
-4. Проверьте, не запущена ли другая служба или копия `winws.exe`.
-5. Просмотрите уведомления антивируса и проверьте подозрительный файл по хешу, прежде чем добавлять исключение.
+1. Make sure the archive was fully extracted.
+2. Confirm that `bin/winws.exe`, `bin/WinDivert.dll`, and `bin/WinDivert64.sys` exist.
+3. Run `service.bat` and select **Run Diagnostics**.
+4. Check whether another service or copy of `winws.exe` is already running.
+5. Review antivirus notifications and verify a suspicious file by hash before adding an exclusion.
 
-### Discord работает без голосовых каналов
+### Discord works, but voice channels do not
 
-- используйте `DiscordFix.bat` или `UltimateFix.bat`, а не профиль только для TCP;
-- в `service.bat` выберите **Update hosts file (for Discord voice)**;
-- проверьте, что UDP не блокируется роутером, VPN или сторонним межсетевым экраном.
+- use `DiscordFix.bat` or `UltimateFix.bat`, not a TCP-only profile;
+- select **Update hosts file (for Discord voice)** in `service.bat`;
+- confirm that UDP is not blocked by the router, VPN, or a third-party firewall.
 
-### Ни одна готовая стратегия не работает
+### None of the bundled strategies work
 
-1. Запустите `АВТО-ПОИСК пре-конфига (бета v2).exe`.
-2. Выполните `blockcheck.cmd` и сохраните рабочие параметры.
-3. Попробуйте профили из `pre-configs/6.0`.
-4. Сверьтесь с [документацией zapret](https://github.com/bol-van/zapret/tree/master/docs).
+1. Run `АВТО-ПОИСК пре-конфига (бета v2).exe`.
+2. Run `blockcheck.cmd` and save the working parameters.
+3. Try the profiles under `pre-configs/6.0`.
+4. Consult the [zapret documentation](https://github.com/bol-van/zapret/tree/master/docs).
 
-## Структура репозитория
+## Repository structure
 
 ```text
 discord-fex/
-├── bin/            # winws, WinDivert, blockcheck, Cygwin и служебные файлы
-├── lists/          # списки доменов, IP-адресов и фильтры WinDivert
-├── pre-configs/    # готовые BAT-конфигурации
-├── utils/          # тесты и вспомогательные данные
-├── service.bat     # управление службой и диагностикой
-├── blockcheck.cmd  # подбор рабочей стратегии
+├── bin/            # winws, WinDivert, blockcheck, Cygwin, and support files
+├── lists/          # domain lists, IP lists, and WinDivert filters
+├── pre-configs/    # ready-made BAT configurations
+├── utils/          # tests and supporting data
+├── service.bat     # service management and diagnostics
+├── blockcheck.cmd  # strategy discovery
 └── README.md
 ```
 
-## Безопасность
+## Security
 
 > [!WARNING]
-> Проект изменяет обработку сетевого трафика и загружает системный драйвер WinDivert. Запускайте его только если понимаете назначение этих компонентов.
+> This project changes how network traffic is processed and loads the WinDivert system driver. Run it only if you understand the role of these components.
 
-- Часть готовых EXE-файлов может не иметь цифровой подписи. Перед запуском проверяйте источник и SHA-256.
-- Не отключайте защиту Windows целиком. Если возникает детектирование, сначала сравните файл с соответствующим upstream-проектом и проверьте его несколькими средствами анализа.
-- Файл `Запустить майнер.exe` описан исходной документацией сборки как шуточная программа [AlbanianVirus](https://github.com/Priler/AlbanianVirus); для работы zapret он **не нужен**.
-- Не публикуйте диагностические отчёты без просмотра: они могут содержать сведения о вашей сети.
-- Подробнее см. [SECURITY.md](SECURITY.md).
+- Some bundled EXE files may not have a digital signature. Verify their source and SHA-256 hash before running them.
+- Do not disable Windows security entirely. If a file is detected, compare it with the corresponding upstream project and analyze it with multiple tools first.
+- The file `Запустить майнер.exe` is described by the original bundle documentation as the [AlbanianVirus](https://github.com/Priler/AlbanianVirus) joke program. It is **not required** for zapret to work.
+- Review diagnostic reports before sharing them because they may contain information about your network.
+- See [SECURITY.md](SECURITY.md) for the complete policy.
 
-## Сторонние компоненты
+## Third-party components
 
-Сборка объединяет материалы нескольких независимых проектов:
+This bundle contains material from several independent projects:
 
 - [bol-van/zapret](https://github.com/bol-van/zapret)
 - [bol-van/zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle)
@@ -160,8 +162,8 @@ discord-fex/
 - [Priler/discordfix_autoupdate](https://github.com/Priler/discordfix_autoupdate)
 - [V3nilla/IPSets-For-Bypass-in-Russia](https://github.com/V3nilla/IPSets-For-Bypass-in-Russia)
 
-Подробности и замечание о лицензиях находятся в [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Исходная расширенная инструкция сохранена в файле [`2. ПРОЧТИ_МЕНЯ.txt`](2.%20ПРОЧТИ_МЕНЯ.txt).
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution and licensing notes. The original extended instructions remain available in [`2. ПРОЧТИ_МЕНЯ.txt`](2.%20ПРОЧТИ_МЕНЯ.txt).
 
-## Правовая информация
+## Legal notice
 
-Используйте проект только в соответствии с применимым законодательством и правилами вашей сети. Репозиторий предоставляется «как есть», без гарантии доступности конкретных сервисов. Права на сторонние компоненты принадлежат их авторам; единую лицензию на весь комплект следует определять по лицензиям исходных проектов.
+Use this project only in accordance with applicable law and the rules of your network. The repository is provided “as is,” without any guarantee that a particular service will be available. Rights to third-party components remain with their respective authors; determine the license for each component from its upstream project.

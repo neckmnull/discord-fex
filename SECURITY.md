@@ -1,37 +1,37 @@
-# Политика безопасности
+# Security Policy
 
-## Безопасное использование
+## Safe use
 
-Discord Fex работает с сетевым трафиком на уровне драйвера и требует повышенных прав. Перед запуском:
+Discord Fex processes network traffic at the driver level and requires elevated privileges. Before running it:
 
-1. скачивайте файлы только из доверенного источника;
-2. полностью распаковывайте сборку в отдельный каталог;
-3. просматривайте BAT/CMD/PowerShell-сценарии перед выполнением;
-4. проверяйте контрольные суммы бинарников и цифровые подписи, если они доступны;
-5. создайте точку восстановления перед установкой службы или драйвера;
-6. не отключайте антивирус целиком ради запуска неизвестного файла.
+1. download files only from a trusted source;
+2. fully extract the bundle into a separate directory;
+3. review BAT, CMD, and PowerShell scripts before executing them;
+4. verify binary checksums and digital signatures when available;
+5. create a restore point before installing a service or driver;
+6. do not disable antivirus protection entirely to run an unknown file.
 
-WinDivert и инструменты изменения сетевых пакетов могут вызывать предупреждения защитного ПО из-за принципа своей работы. Такое предупреждение не следует автоматически считать ни доказательством вредоносности, ни гарантированно ложным срабатыванием.
+WinDivert and network packet modification tools may trigger security software because of how they operate. A detection should not automatically be treated as either proof of malware or a guaranteed false positive.
 
-Файл `Запустить майнер.exe` не участвует в работе zapret. Согласно исходной документации комплекта, это шуточная программа из проекта [Priler/AlbanianVirus](https://github.com/Priler/AlbanianVirus). Не запускайте её, если вам нужна только основная функциональность сборки.
+The file `Запустить майнер.exe` is not involved in zapret operation. According to the original bundle documentation, it is a joke program from [Priler/AlbanianVirus](https://github.com/Priler/AlbanianVirus). Do not run it if you only need the core bundle functionality.
 
-## Сообщение об уязвимости
+## Reporting a vulnerability
 
-Если проблема относится к этому репозиторию — например, к конфигурации, документации или несоответствующему заявленному источнику бинарнику — создайте приватное сообщение через **Security → Report a vulnerability** на GitHub. Не публикуйте рабочий эксплойт, персональные сетевые данные или чувствительные диагностические отчёты в обычном Issue.
+If a vulnerability affects this repository—for example, a configuration issue, a documentation issue, or a binary that does not match its stated source—submit a private report through **Security → Report a vulnerability** on GitHub. Do not publish a working exploit, personal network information, or sensitive diagnostic reports in a public issue.
 
-Если проблема находится в стороннем компоненте, отправьте отчёт его разработчикам:
+If the issue is in a third-party component, report it to that component's maintainers:
 
 - zapret: <https://github.com/bol-van/zapret/security>
 - zapret-win-bundle: <https://github.com/bol-van/zapret-win-bundle/security>
 - WinDivert: <https://github.com/basil00/WinDivert/security>
 
-В отчёте укажите:
+Include the following information in a report:
 
-- затронутый файл и его SHA-256;
-- версию Windows;
-- минимальные шаги воспроизведения;
-- ожидаемое и фактическое поведение;
-- влияние проблемы;
-- безопасный способ связаться с вами, если он нужен.
+- the affected file and its SHA-256 hash;
+- the Windows version;
+- minimal reproduction steps;
+- expected and actual behavior;
+- the security impact;
+- a safe way to contact you, if necessary.
 
-Перед отправкой удалите из логов IP-адреса, имена пользователей, пути профиля и другие персональные данные.
+Remove IP addresses, usernames, profile paths, and other personal information from logs before submitting them.
