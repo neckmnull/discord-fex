@@ -1,0 +1,26 @@
+# Windows metadata
+Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Runtime and diagnostic output
+*.log
+*.tmp
+*.bak
+utils/test results/
+lists/ipset-all.test-backup.txt
+bin/gmode.flag
+
+# Locally downloaded update archives
+*.zip
+*.7z
+*.rar

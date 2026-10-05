@@ -1,0 +1,27 @@
+* text=auto
+
+# Windows scripts must retain CRLF line endings.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.vbs text eol=crlf
+
+# Shell scripts run through Cygwin/Linux.
+*.sh text eol=lf
+*.bashrc text eol=lf
+*.profile text eol=lf
+*.bash_profile text eol=lf
+*.bash_logout text eol=lf
+
+# Binary payloads.
+*.exe binary
+*.dll binary
+*.sys binary
+*.bin binary
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.crt binary
+*.so binary
